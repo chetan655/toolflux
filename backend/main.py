@@ -28,8 +28,9 @@ app = FastAPI(
 # ---------------------------------------------------------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r"http://localhost:\d+",  # any localhost port for dev
-    allow_origins=["https://toolflux.io"],        # production domain
+    # Allow localhost (any port) for dev + Vercel prod/preview URLs
+    allow_origin_regex=r"(http://localhost:\d+|https://.*\.vercel\.app|https://toolflux\.io)",
+    allow_origins=["https://toolflux.io"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

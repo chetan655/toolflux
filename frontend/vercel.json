@@ -1,0 +1,8 @@
+{
+  "env": {
+    "NEXT_PUBLIC_API_URL": {
+      "description": "URL of the ToolFlux FastAPI backend (Railway deployment URL)",
+      "example": "https://toolflux-api.up.railway.app"
+    }
+  }
+}
