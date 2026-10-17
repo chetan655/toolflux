@@ -1,0 +1,21 @@
+# ── Backend ──────────────────────────────────
+backend/.env
+backend/.venv/
+backend/__pycache__/
+backend/**/__pycache__/
+backend/*.pyc
+backend/.python-version
+
+# ── Frontend ─────────────────────────────────
+frontend/.next/
+frontend/node_modules/
+frontend/.env.local
+frontend/out/
+
+# ── OS / Editor ──────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
