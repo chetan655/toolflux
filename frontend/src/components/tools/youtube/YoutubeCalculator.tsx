@@ -38,12 +38,12 @@ type ResultTab = 'summary' | 'breakdown'
 // API routes live in this same Next.js app (src/app/api/youtube/*)
 const API_BASE = ''
 
-const SPEEDS: Array<{ key: string; label: string; emoji: string }> = [
-  { key: '1.0', label: '1×', emoji: '🐢' },
-  { key: '1.25', label: '1.25×', emoji: '🐇' },
-  { key: '1.5', label: '1.5×', emoji: '🚀' },
-  { key: '1.75', label: '1.75×', emoji: '⚡' },
-  { key: '2.0', label: '2×', emoji: '🔥' },
+const SPEEDS: Array<{ key: string; label: string }> = [
+  { key: '1.0', label: '1×' },
+  { key: '1.25', label: '1.25×' },
+  { key: '1.5', label: '1.5×' },
+  { key: '1.75', label: '1.75×' },
+  { key: '2.0', label: '2×' },
 ]
 
 // ── Helpers ────────────────────────────────────────────────────────────────
@@ -134,7 +134,7 @@ export default function YoutubeCalculator() {
             className={`${styles.tab} ${tab === 'playlist' ? styles.tabActive : ''}`}
             onClick={() => { setTab('playlist'); setResult(null); setError(null) }}
           >
-            📋 Playlist URL
+            Playlist URL
           </button>
           <button
             role="tab"
@@ -142,7 +142,7 @@ export default function YoutubeCalculator() {
             className={`${styles.tab} ${tab === 'videos' ? styles.tabActive : ''}`}
             onClick={() => { setTab('videos'); setResult(null); setError(null) }}
           >
-            🎥 Multiple Videos
+            Multiple Videos
           </button>
         </div>
 
@@ -154,7 +154,6 @@ export default function YoutubeCalculator() {
                 YouTube Playlist URL
               </label>
               <div className={styles.inputWrap}>
-                <span className={styles.inputPrefix}>🔗</span>
                 <input
                   id="playlist-url"
                   type="url"
@@ -201,7 +200,7 @@ export default function YoutubeCalculator() {
           <div className={styles.actions}>
             {result && (
               <button className="btn btn-ghost" onClick={reset}>
-                ↺ Reset
+                Reset
               </button>
             )}
             <button
@@ -216,7 +215,7 @@ export default function YoutubeCalculator() {
                   Calculating…
                 </>
               ) : (
-                <>⚡ Calculate Duration</>
+                'Calculate'
               )}
             </button>
           </div>
@@ -232,13 +231,13 @@ export default function YoutubeCalculator() {
               className={`${styles.resultTab} ${resultTab === 'summary' ? styles.resultTabActive : ''}`}
               onClick={() => setResultTab('summary')}
             >
-              📊 Summary
+              Summary
             </button>
             <button
               className={`${styles.resultTab} ${resultTab === 'breakdown' ? styles.resultTabActive : ''}`}
               onClick={() => setResultTab('breakdown')}
             >
-              📋 Video Breakdown ({result.videos.length})
+              Video Breakdown ({result.videos.length})
             </button>
           </div>
 
@@ -256,7 +255,7 @@ export default function YoutubeCalculator() {
 
               {/* Speed breakdown */}
               <div className={styles.speedGrid}>
-                {SPEEDS.map(({ key, label, emoji }) => {
+                {SPEEDS.map(({ key, label }) => {
                   const entry = result.speeds[key]
                   if (!entry) return null
                   const isNormal = key === '1.0'
@@ -265,7 +264,6 @@ export default function YoutubeCalculator() {
                       key={key}
                       className={`${styles.speedCard} ${isNormal ? styles.speedCardNormal : ''}`}
                     >
-                      <div className={styles.speedEmoji}>{emoji}</div>
                       <div className={styles.speedLabel}>{label} speed</div>
                       <div className={styles.speedValue}>{fmtDuration(entry.total_seconds)}</div>
                       {!isNormal && (

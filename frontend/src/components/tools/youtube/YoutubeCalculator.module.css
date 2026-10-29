@@ -77,17 +77,9 @@
   align-items: center;
 }
 
-.inputPrefix {
-  position: absolute;
-  left: var(--space-4);
-  font-size: 1rem;
-  pointer-events: none;
-  z-index: 1;
-}
-
 .input {
   width: 100%;
-  padding: var(--space-4) var(--space-4) var(--space-4) var(--space-10);
+  padding: var(--space-4);
   background: var(--bg-elevated);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
@@ -281,12 +273,6 @@
 .speedCardNormal {
   background: rgba(139, 92, 246, 0.06);
   border-color: rgba(139, 92, 246, 0.2);
-}
-
-.speedEmoji {
-  font-size: 1.5rem;
-  margin-bottom: var(--space-2);
-  display: block;
 }
 
 .speedLabel {

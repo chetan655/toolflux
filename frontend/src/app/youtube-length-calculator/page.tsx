@@ -125,26 +125,15 @@ export default function YoutubeCalculatorPage() {
       {/* Page hero */}
       <section className={styles.pageHero}>
         <div className={`container ${styles.pageHeroInner}`}>
-          <div className={styles.breadcrumb}>
-            <a href="/">Home</a>
-            <span>/</span>
-            <span>YouTube Length Calculator</span>
-          </div>
-          <div className={styles.toolIconWrap}>
-            <span className={styles.toolIcon}>▶</span>
-          </div>
-          <h1 className={styles.pageTitle}>
-            YouTube Playlist Length{' '}
-            <span className="gradient-text">Calculator</span>
-          </h1>
+          <h1 className={styles.pageTitle}>YouTube Playlist Length Calculator</h1>
           <p className={styles.pageSubtitle}>
-            Find out exactly how long any YouTube playlist or set of videos will take to watch —
-            including estimates at 1.25×, 1.5×, 1.75×, and 2× speed.
+            Paste a playlist link to get the total watch time — with estimates at 1.25×, 1.5×,
+            1.75×, and 2× speed.
           </p>
           <div className={styles.quickStats}>
-            <span>⚡ Instant results</span>
-            <span>🔒 No sign-up</span>
-            <span>📋 Playlist & video support</span>
+            <span>Free</span>
+            <span>No sign-up</span>
+            <span>Playlists & videos</span>
           </div>
         </div>
       </section>

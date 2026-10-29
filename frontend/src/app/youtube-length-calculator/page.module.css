@@ -1,94 +1,62 @@
 .pageHero {
-  padding: var(--space-16) 0 var(--space-10);
+  padding: var(--space-10) 0 var(--space-2);
   text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.pageHero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
-  pointer-events: none;
 }
 
 .pageHeroInner {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.breadcrumb a {
-  color: var(--text-muted);
-  transition: color var(--transition-fast);
-}
-.breadcrumb a:hover { color: var(--brand-primary); }
-.breadcrumb span { color: var(--text-dim); }
-
-.toolIconWrap {
-  width: 72px;
-  height: 72px;
-  background: rgba(255, 60, 60, 0.12);
-  border: 1px solid rgba(255, 60, 60, 0.2);
-  border-radius: var(--radius-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: #ff4444;
-  box-shadow: 0 0 30px rgba(255, 60, 60, 0.15);
+@media (max-width: 640px) {
+  .pageHero {
+    padding: var(--space-6) 0 0;
+  }
 }
 
 .pageTitle {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
   max-width: 700px;
 }
 
 .pageSubtitle {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
-  max-width: 520px;
-  line-height: 1.7;
+  max-width: 480px;
+  line-height: 1.6;
 }
 
 .quickStats {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-  font-size: 0.82rem;
+  gap: var(--space-2);
+  font-size: 0.78rem;
   color: var(--text-muted);
   font-weight: 500;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.quickStats span {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
+.quickStats span:not(:last-child)::after {
+  content: '·';
+  margin-left: var(--space-2);
+  color: var(--text-dim);
 }
 
 /* ── Tool section ──────────────────────────────────────────── */
 .toolSection {
-  padding: var(--space-6) 0 var(--space-16);
+  padding: var(--space-5) 0 var(--space-16);
+}
+
+@media (max-width: 640px) {
+  .toolSection {
+    padding-top: var(--space-4);
+  }
 }
 
 /* ── SEO Section ───────────────────────────────────────────── */

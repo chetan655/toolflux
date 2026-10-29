@@ -46,8 +46,8 @@ export default function Header() {
 
         {/* CTA + Mobile toggle */}
         <div className={styles.actions}>
-          <Link href="/youtube-length-calculator" className={`btn btn-primary ${styles.ctaBtn}`}>
-            Try Tools Free
+          <Link href="/#tools" className={`btn btn-primary ${styles.ctaBtn}`}>
+            All Tools
           </Link>
           <button
             className={styles.menuToggle}
