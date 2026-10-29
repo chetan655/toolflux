@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/site'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://toolflux.io'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: 'ToolFlux — Free Online Tools for Everyone',
     template: '%s | ToolFlux',
@@ -25,26 +26,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://toolflux.io',
+    url: SITE_URL,
     siteName: 'ToolFlux',
     title: 'ToolFlux — Free Online Tools for Everyone',
     description:
       'Powerful, free online tools: YouTube length calculator, PDF utilities, image resizer, and more.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'ToolFlux — Free Online Tools',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ToolFlux — Free Online Tools for Everyone',
     description:
       'Powerful, free online tools: YouTube length calculator, PDF utilities, image resizer, and more.',
-    images: ['/og-image.png'],
   },
   robots: {
     index: true,

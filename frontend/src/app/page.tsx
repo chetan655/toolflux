@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/site'
 import Link from 'next/link'
 import styles from './page.module.css'
 
@@ -6,6 +7,7 @@ export const metadata: Metadata = {
   title: 'ToolFlux — Free Online Tools for Creators & Developers',
   description:
     'ToolFlux is your all-in-one toolkit: calculate YouTube playlist durations, process PDFs, resize images, convert JSON to Pydantic, and much more — all free, fast, and private.',
+  alternates: { canonical: SITE_URL },
 }
 
 const TOOLS = [
@@ -53,8 +55,8 @@ const TOOLS = [
 ]
 
 const STATS = [
-  { value: '10K+', label: 'Monthly Users' },
-  { value: '4', label: 'Powerful Tools' },
+  { value: '∞', label: 'Unlimited Uses' },
+  { value: '4', label: 'Tools & Counting' },
   { value: '100%', label: 'Free Forever' },
   { value: '0', label: 'Ads or Tracking' },
 ]
@@ -70,13 +72,13 @@ export default function HomePage() {
             '@context': 'https://schema.org',
             '@type': 'WebSite',
             name: 'ToolFlux',
-            url: 'https://toolflux.io',
+            url: SITE_URL,
             description:
               'Free online tools for creators and developers — YouTube calculator, PDF tools, image resizer, and more.',
-            potentialAction: {
-              '@type': 'SearchAction',
-              target: 'https://toolflux.io/search?q={search_term_string}',
-              'query-input': 'required name=search_term_string',
+            publisher: {
+              '@type': 'Organization',
+              name: 'ToolFlux',
+              url: SITE_URL,
             },
           }),
         }}

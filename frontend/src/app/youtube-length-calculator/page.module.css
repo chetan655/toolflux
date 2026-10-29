@@ -192,3 +192,24 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Speed comparison table */
+.speedTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-4);
+  font-size: 0.9rem;
+}
+
+.speedTable th,
+.speedTable td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+}
+
+.speedTable th {
+  color: var(--text-primary);
+  font-weight: 600;
+}

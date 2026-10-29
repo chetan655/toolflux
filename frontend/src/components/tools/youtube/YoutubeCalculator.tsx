@@ -35,7 +35,8 @@ interface DurationResult {
 type Tab = 'playlist' | 'videos'
 type ResultTab = 'summary' | 'breakdown'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
+// API routes live in this same Next.js app (src/app/api/youtube/*)
+const API_BASE = ''
 
 const SPEEDS: Array<{ key: string; label: string; emoji: string }> = [
   { key: '1.0', label: '1×', emoji: '🐢' },

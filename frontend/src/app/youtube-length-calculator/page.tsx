@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/site'
 import YoutubeCalculator from '@/components/tools/youtube/YoutubeCalculator'
 import styles from './page.module.css'
 
@@ -19,11 +20,11 @@ export const metadata: Metadata = {
     title: 'YouTube Playlist Length Calculator — ToolFlux',
     description:
       'Calculate the total duration of any YouTube playlist instantly. See estimated watch times at different playback speeds.',
-    url: 'https://toolflux.io/youtube-length-calculator',
+    url: `${SITE_URL}/youtube-length-calculator`,
     type: 'website',
   },
   alternates: {
-    canonical: 'https://toolflux.io/youtube-length-calculator',
+    canonical: `${SITE_URL}/youtube-length-calculator`,
   },
 }
 
@@ -52,6 +53,18 @@ const FAQ = [
     q: 'Can I calculate the total time of multiple separate videos?',
     a: 'Yes! Switch to the "Multiple Videos" tab and paste one YouTube URL per line. We\'ll calculate the combined duration.',
   },
+  {
+    q: 'How do I check a YouTube playlist\'s length without installing an extension?',
+    a: 'You don\'t need a browser extension. Just paste the playlist URL into this page and click Calculate — it works on any device, including mobile.',
+  },
+  {
+    q: 'Is there a limit on how many videos a playlist can have?',
+    a: 'No practical limit. The calculator pages through the entire playlist via the YouTube API, so playlists with hundreds or thousands of videos work fine.',
+  },
+  {
+    q: 'Does it work with YouTube Shorts and regular video links?',
+    a: 'Yes. It accepts standard watch URLs, youtu.be short links, embed links, and Shorts URLs — as well as raw 11-character video IDs.',
+  },
 ]
 
 export default function YoutubeCalculatorPage() {
@@ -67,11 +80,44 @@ export default function YoutubeCalculatorPage() {
             name: 'YouTube Playlist Length Calculator',
             applicationCategory: 'UtilitiesApplication',
             operatingSystem: 'Web',
-            url: 'https://toolflux.io/youtube-length-calculator',
+            url: `${SITE_URL}/youtube-length-calculator`,
             description:
               'Calculate the total duration of YouTube playlists and videos. See watch times at various playback speeds.',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-            provider: { '@type': 'Organization', name: 'ToolFlux' },
+            provider: { '@type': 'Organization', name: 'ToolFlux', url: SITE_URL },
+          }),
+        }}
+      />
+      {/* FAQPage schema — no longer a Google rich result, but heavily cited by AI search engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: FAQ.map((f) => ({
+              '@type': 'Question',
+              name: f.q,
+              acceptedAnswer: { '@type': 'Answer', text: f.a },
+            })),
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'YouTube Playlist Length Calculator',
+                item: `${SITE_URL}/youtube-length-calculator`,
+              },
+            ],
           }),
         }}
       />
@@ -114,31 +160,47 @@ export default function YoutubeCalculatorPage() {
       <section className={styles.seoSection}>
         <div className={`container ${styles.seoInner}`}>
           <div className={styles.seoContent}>
-            <h2>How to Calculate YouTube Playlist Duration</h2>
+            <h2>How do you calculate the total length of a YouTube playlist?</h2>
+            <p>
+              Paste the playlist URL into the calculator above and press Calculate. The tool reads the
+              exact duration of every video directly from the official YouTube Data API and adds them up,
+              giving you the total watch time to the second — even for playlists with hundreds of videos.
+            </p>
             <p>
               Ever started watching a YouTube playlist and wondered, <em>"How long will this actually take?"</em>{' '}
               Whether you're planning a study session, a workout, or just bingeing your favorite creator —
-              knowing the total length upfront saves time and helps you plan better.
-            </p>
-            <p>
-              ToolFlux's YouTube Playlist Length Calculator connects directly to YouTube's official API to fetch
-              the exact duration of every video in a playlist — even playlists with hundreds of videos.
-              You get the total time in seconds, plus a clear breakdown per video.
+              knowing the total length upfront helps you plan better. You also get a per-video breakdown
+              and the average video length.
             </p>
 
-            <h2>Why Watch Speed Estimates Matter</h2>
+            <h2>How much time do you save at faster playback speeds?</h2>
             <p>
-              Watching at 1.5× speed is one of the most popular productivity tricks. A 10-hour playlist
-              becomes just 6 hours and 40 minutes. At 2× speed, you finish in 5 hours. Our calculator
-              shows you exactly how much time you save at every speed, so you can choose the right pace
-              for the content.
+              Watching at 1.5× speed turns a 10-hour playlist into 6 hours and 40 minutes; at 2× you finish
+              in 5 hours. The calculator shows the adjusted watch time at every speed YouTube supports, so
+              you can choose the right pace for the content. Here's what a 10-hour playlist takes:
             </p>
+            <table className={styles.speedTable}>
+              <thead>
+                <tr>
+                  <th>Playback speed</th>
+                  <th>Actual watch time</th>
+                  <th>Time saved</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>1× (normal)</td><td>10h 00m</td><td>—</td></tr>
+                <tr><td>1.25×</td><td>8h 00m</td><td>2h 00m</td></tr>
+                <tr><td>1.5×</td><td>6h 40m</td><td>3h 20m</td></tr>
+                <tr><td>1.75×</td><td>5h 43m</td><td>4h 17m</td></tr>
+                <tr><td>2×</td><td>5h 00m</td><td>5h 00m</td></tr>
+              </tbody>
+            </table>
 
-            <h2>Calculate Duration for Multiple Videos</h2>
+            <h2>Can you add up the length of separate videos too?</h2>
             <p>
-              Not everything is in a playlist. Paste URLs of individual videos (one per line) to calculate
-              the combined total. Great for curated lists, homework assignments, or course modules spread
-              across different channels.
+              Yes — not everything is in a playlist. Switch to the "Multiple Videos" tab and paste URLs of
+              individual videos (one per line) to calculate the combined total. Great for curated lists,
+              homework assignments, or course modules spread across different channels.
             </p>
           </div>
 
