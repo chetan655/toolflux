@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import styles from './YoutubeCalculator.module.css'
 
@@ -80,6 +80,11 @@ export default function YoutubeCalculator() {
   const [error, setError] = useState<string | null>(null)
   const [result, setResult] = useState<DurationResult | null>(null)
   const [resultTab, setResultTab] = useState<ResultTab>('summary')
+  const resultsRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (result) resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [result])
 
   const calculate = useCallback(async () => {
     setError(null)
@@ -224,7 +229,7 @@ export default function YoutubeCalculator() {
 
       {/* Results */}
       {result && (
-        <div className={styles.results} aria-live="polite">
+        <div ref={resultsRef} className={styles.results} aria-live="polite">
           {/* Result tabs */}
           <div className={styles.resultTabs}>
             <button

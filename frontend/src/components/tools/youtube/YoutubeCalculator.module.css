@@ -170,6 +170,7 @@
 
 /* ── Results ────────────────────────────────────────────────── */
 .results {
+  scroll-margin-top: 80px; /* clear the sticky header when scrolled into view */
   background: var(--bg-card);
   border: 1px solid var(--border-brand);
   border-radius: var(--radius-xl);
